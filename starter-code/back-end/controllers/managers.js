@@ -1,9 +1,10 @@
 var db = require('../models');
 var Manager = db.models.Manager;
 var Artist = db.models.Artist;
+var Ad = db.models.Ad;
 
 function index(req, res) {
-	Manager.findAll().then(function(managers) {
+	Manager.findAll({include: Ad}).then(function(managers) {
 		res.json(managers);
 	});
 }

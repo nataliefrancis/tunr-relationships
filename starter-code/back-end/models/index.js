@@ -10,6 +10,7 @@ module.exports.sequelize = sequelize;
 var Artist = sequelize.import("./artist");
 var Manager = sequelize.import("./manager");
 var Song = sequelize.import("./song");
+var Ad = sequelize.import('./ad');
 
 Song.belongsTo(Artist);
 Artist.hasMany(Song);
@@ -17,8 +18,12 @@ Artist.hasMany(Song);
 Manager.hasMany(Artist);
 Artist.belongsTo(Manager);
 
+Ad.belongsTo(Manager);
+Manager.hasOne(Ad);
+
 module.exports.models = {
 	Artist: Artist,
 	Manager: Manager,
-	Song: Song
+	Song: Song,
+	Ad: Ad
 };

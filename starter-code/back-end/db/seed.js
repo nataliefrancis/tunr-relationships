@@ -17,6 +17,14 @@ var lucySongs = [
      }
 ];
 
+var adCreate = function(manager) {
+     return DB.Ad.create({
+     headline: 'Need Artists!',
+     url: 'www.linkedin.com',
+     managerId: manager.id
+     });
+ };
+
  var artistCreate = function(manager) {
  	return DB.Artist.create({
      name: 'Luciano Pavarotti',
@@ -43,6 +51,7 @@ var lucySongs = [
      })
      .then(function(manager) {
           artistCreate(manager);
+          adCreate(manager);
      });
      
  };
